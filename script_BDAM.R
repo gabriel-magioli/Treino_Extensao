@@ -93,7 +93,9 @@ dados_bd2$TIPO_VEICULO=factor(dados_bd2$TIPO_VEICULO, levels = c(1,2), labels = 
 # agregar ao banco dados_bd2 as informações de VALOR_P10 e VALOR_P90
 # criar a variável PAM (somente quando TIPO_VEICULO = "Carro"), de acordo com IDADE_PROPRIETARIO e SEXO_PROPRIETARIO, com as seguintes categorias:
 # PAM = "PIC", se VALOR_VEICULO < VALOR_P10; "AIC", se VALOR_P10 <= VALOR_VEICULO <= VALOR_P90; "GIC", se VALOR_VEICULO > VALOR_P90
-
+tabela_pam = read.csv("Tabela_PAM.csv", header = T, sep=";")
+dados_bd2 = merge(dados_bd2, tabela_pam, by =c ("IDADE_PROPRIETARIO","SEXO_PROPRIETARIO"),all.x = T)
+dados_bd2$PAM = ifelse(dados_bd2$TIPO_VEICULO != "Carro", NA, ifelse[is.na(dados_bd2$TIPO_VEICULO == "Carro", ifelse())])
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório Treino_Extensao
 
 
