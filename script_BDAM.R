@@ -169,7 +169,7 @@ View(BANCO3_RJ)
 
 
 # Tarefa 4: Exportar o banco de dados BANCO3_RJ com o nome BANCO3_RJ.csv
-
+write.table(BANCO3_RJ, file = "BANCO3_RJ.csv",sep =";", row.names = FALSE)
 # Ao terminar a Tarefa 4 commit com a mensagem "dados e script - Etapa 3" e envie para o repositório Treino_Extensao
 
 
