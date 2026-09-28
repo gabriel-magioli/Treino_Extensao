@@ -155,6 +155,15 @@ dados_bd3$MUNICIPIOS = dados_bd3$MUNICIPIO %/% 10
 # POPH: população total de habilitados
 # POPHF: população total feminina de habilitadas
 # POPHM: população total masculina de habilitadas
+library(dplyr)
+BANCO3_RJ = dados_bd3 %>% mutate(ANO=2025, NIVEL = ifelse(MUNICIPIO == 33, "UF", "MUNICIPIO"),
+CODIGO = ifelse(MUNICIPIO == 33, 33, MUNICIPIOS),
+POHP= HABILITADOS_GERAL_2025,
+POPHF= POP_FEM_HABILITADA_2020,
+POPHM= POP_MASC_HABILITADA_2020
+) %>% select(ANO, NIVEL, POHP, POPHF, POPHM)
+View(BANCO3_RJ)
+
 
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório Treino_Extensao
 
