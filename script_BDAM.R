@@ -213,6 +213,15 @@ dados_bd4$MUNICIPIOS = Cod_IBGE$CODMUNRES[match(nomes,nomes_IBGE)]
 # QR_CA: qualidade da rodovia em 2020
 # QRU: qualidade das rodovias urbanas
 # QRR: qualidade das rodovias rurais
+library(dplyr)
+BANCO4_RJ = dados_bd4 %>% mutate(ANO=2025, NIVEL = ifelse(MUNICIPIO == 33, "UF", "MUNICIPIO"),
+CODIGO = ifelse(MUNICIPIO == 33, 33, MUNICIPIOS),
+QR_CA = QUALIDADE_RODOVIAS_2020,
+QRU = QUALIDADE_URBANA_2025 ,
+QRR= QUALIDADE_RURAL_2025
+) %>% select(ANO, NIVEL, MUNICIPIO, QR_CA, QRU ,QRR )
+View(BANCO4_RJ)
+BANCO4_RJ$NIVEL[1]="UF"
 
 
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório Treino_Extensao
