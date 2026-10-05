@@ -180,6 +180,12 @@ write.table(BANCO3_RJ, file = "BANCO3_RJ.csv",sep =";", row.names = FALSE)
 # Tarefa 1: Leitura do banco de dados banco 4 = ATLAS.csv com o nome de dados_bd4 e do arquivo com tabela de códigos do IBGE
 # códigos dos municípios - 2010.csv" com os códigos do IBGE para os municípios do Brasil
 # Ler os arquivos, verificar estruturas dos dados e dar uma olhada nos dados
+dados_bd4 = read.csv("banco 4 ATLAS.csv", header = T, sep = ";")
+Cod_IBGE= read.csv("códigos dos municípios - 2010.csv", header = T, sep = ";")
+View(dados_bd4)
+View(Cod_IBGE)
+dim(dados_bd4)
+dim(Cod_IBGE)
 
 # Ao terminar a Tarefa 1 commit com a mensagem " script - tarefa 1" e envie para o repositório Treino_Extensao
 
