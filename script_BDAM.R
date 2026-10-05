@@ -180,7 +180,7 @@ write.table(BANCO3_RJ, file = "BANCO3_RJ.csv",sep =";", row.names = FALSE)
 # Tarefa 1: Leitura do banco de dados banco 4 = ATLAS.csv com o nome de dados_bd4 e do arquivo com tabela de códigos do IBGE
 # códigos dos municípios - 2010.csv" com os códigos do IBGE para os municípios do Brasil
 # Ler os arquivos, verificar estruturas dos dados e dar uma olhada nos dados
-dados_bd4 = read.csv("banco 4 ATLAS.csv", header = T, sep = ";")
+dados_bd4 = read.csv("banco 4 ATLAS.csv", header = T, sep = ";",fileEncoding = "Latin1")
 Cod_IBGE= read.csv("códigos dos municípios - 2010.csv", header = T, sep = ";")
 View(dados_bd4)
 View(Cod_IBGE)
@@ -193,7 +193,15 @@ dim(Cod_IBGE)
 # Tarefa 2: Manipulação dos dados
 # Criar uma nova variável em dados_bd4 MUNICIPIOS atribuindo os códigos dos municípios, de forma a ficar
 # coerente com os nomes dos municipios e códigos IBGE
-
+nomes = dados_bd4$MUNICIPIO
+nomes = gsub("\\(RJ\\)$", "",nomes)
+nomes = trimws(nomes)
+nomes = tolower(nomes)
+nomes = iconv(nomes , to = "ASCII//TRANSLIT")
+nomes_IBGE = trimws(Cod_IBGE$município)
+nomes_IBGE = tolower(nomes_IBGE)
+nomes_IBGE = iconv(nomes_IBGE, to="ASCII//TRANSLIT")
+dados_bd4$MUNICIPIOS = Cod_IBGE$CODMUNRES[match(nomes,nomes_IBGE)]
 # Ao terminar a Tarefa 2 commit com a mensagem " script - tarefa 1 a 2" e envie para o repositório Treino_Extensao
 
 
