@@ -261,7 +261,13 @@ dados_bd5$NUM_MOTOS_REGISTRADAS = as.numeric(gsub("\\.","",dados_bd5$NUM_MOTOS_R
 # CODIGO: código do municipio (ou da UF)
 # NCR: número de carros registrados
 # NMR: número de motos registradas
-
+library(dplyr)
+BANCO5_RJ = dados_bd5 %>% mutate(ANO=2025, NIVEL = ifelse(MUNICIPIO == 33, "UF", "MUNICIPIO"),
+CODIGO = MUNICIPIO,
+NCR = NUM_CARROS_REGISTRADOS,
+NMR = NUM_MOTOS_REGISTRADAS
+) %>% select(ANO, NIVEL, MUNICIPIO, NCR, NMR)
+View(BANCO5_RJ)
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório Treino_Extensao
 
 
